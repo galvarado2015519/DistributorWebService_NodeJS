@@ -8,23 +8,23 @@ const dbConfig = sequelize;
 
 const PORT = process.env.PORT || 3800;
 
-const connection = mySql.createConnection({
-    host:dbConfig.HOST,
-    user: dbConfig.USER,
-    password: dbConfig.PASSWORD,
-    database: dbConfig.DB
-});
+// Conect with the data base and create the schema model
+const connectDB = async() => {
+    try {
+        await sequelize.sync({ alter: false });
+        console.log('DB is online');
 
-connection.connect(error => {
-    if(error) throw error;
-    else{
-        console.log("Conection success with database");
-        app.listen(PORT, ()=>{
-            console.log('The server is running in the port: ' + PORT)
-        });
+    } catch (error) {
+        console.log(error);
+        return;
     }
+}
+
+connectDB();
+require('./config/connectModels');
+
+app.listen(PORT, ()=>{
+    console.log('The server is running in the port: ' + PORT)
 });
 
-
-
- module.exports = connection;
+module.exports = connection;
