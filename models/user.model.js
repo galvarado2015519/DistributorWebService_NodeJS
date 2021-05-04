@@ -1,9 +1,9 @@
 'use strict'
 
-const { DataTypes } = require("sequelize/types");
+const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db.config");
 
-const UserModel = sequelize.define("user", {
+const UserModel = sequelize.define("User", {
     code:{
         type: DataTypes.INTEGER,
         primaryKey: true,

@@ -34,7 +34,8 @@ const DistributorModel = sequelize.define('Distributor', {
         }
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    tableName: 'Distributor'
 });
 
 module.exports = DistributorModel;

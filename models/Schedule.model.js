@@ -11,7 +11,7 @@ const ScheduleModel = sequelize.define('Schedule', {
         autoIncrement: true
     },
     start: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             notNull: { msg: 'Start time is required'}
@@ -22,7 +22,6 @@ const ScheduleModel = sequelize.define('Schedule', {
         allowNull: false,
         validate: {
             notNull: {msg: 'End time is required'},
-            isDate: { msg: 'Format invalid'}
         }
     },
     distributorCode: {
