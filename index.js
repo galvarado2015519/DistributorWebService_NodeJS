@@ -1,10 +1,12 @@
 'use strict'
 
-const mySql = require('mysql');
-const dbConfig = require('./config/db.config');
-
-const port = 3800;
 const app = require('./app');
+const mySql = require('mysql');
+const {sequelize} = require('./config/db.config');
+
+const dbConfig = sequelize;
+
+const PORT = process.env.PORT || 3800;
 
 const connection = mySql.createConnection({
     host:dbConfig.HOST,
@@ -17,10 +19,12 @@ connection.connect(error => {
     if(error) throw error;
     else{
         console.log("Conection success with database");
-        app.listen(port, ()=>{
-            console.log('The server is running in the port: ' + port)
-        })
+        app.listen(PORT, ()=>{
+            console.log('The server is running in the port: ' + PORT)
+        });
     }
 });
 
-module.exports = connection;
+
+
+ module.exports = connection;

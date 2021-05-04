@@ -1,27 +1,28 @@
 'use strict'
 
-const { DataTypes } = require('sequelize');
+const {DataTypes} = require('sequelize');
 const {sequelize} = require('../config/db.config');
 
-const ProductModel = sequelize.define('Product', {
+const ScheduleModel = sequelize.define('Schedule', {
     code:{
         type: DataTypes.INTEGER,
         primaryKey: true,
         unique: true,
         autoIncrement: true
     },
-    description:{
-        type: DataTypes.STRING,
+    start: {
+        type: DataTypes.DATETIME,
         allowNull: false,
         validate: {
-            notNull: { msg: 'Description is required'}
+            notNull: { msg: 'Start time is required'}
         }
     },
-    amount:{
+    end: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: 'Amount is required'}
+            notNull: {msg: 'End time is required'},
+            isDate: { msg: 'Format invalid'}
         }
     },
     distributorCode: {
@@ -37,4 +38,4 @@ const ProductModel = sequelize.define('Product', {
     timestamps: false
 });
 
-module.exports = ProductModel;
+module.exports = ScheduleModel;

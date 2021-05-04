@@ -1,11 +1,12 @@
 'use strict'
 
+const { Sequelize } = require("sequelize/types");
 
-module.exports = {
+const sequelize = new Sequelize({
     HOST: "localhost",
     USER: "root",
     PASSWORD: "admin",
-    DB: "testdb",
+    DB: "distributordb",
     dialect: "mysql",
     pool: {
         max: 5,
@@ -13,4 +14,9 @@ module.exports = {
         acquire: 30000,
         idle: 10000
     }
+});
+
+
+module.exports = {
+    sequelize
 };
