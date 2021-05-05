@@ -34,6 +34,7 @@ const UserModel = sequelize.define("User", {
     },
     distributorCode:{
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
             model: 'Distributor',
             key: 'code'

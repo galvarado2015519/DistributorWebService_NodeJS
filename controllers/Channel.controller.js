@@ -1,12 +1,17 @@
 'use strict'
 
 const ChannelModel = require('../models/Channel.model');
-const { Op } = require('sequelize');
 
 const createChannel = async (req, res) =>{
 
     try{
-        
+        const channel = new ChannelModel(req.body);
+        await channel.save();
+
+        return res.status(200).json({
+            ok: true,
+            channel
+        })
     }catch(error){
         console.log(error);
         return res.status(500).json({
@@ -18,8 +23,24 @@ const createChannel = async (req, res) =>{
 
 const updateChannel = async (req, res) =>{
 
+    const { code } = req.params;
+
     try{
+        const verify = await ChannelModel.findByPk(code)
+
+        if(!verify){
+            return res.status(404).json({
+                ok: false,
+                msg: 'This code of channel dont exist'
+            }) 
+        }
+
+        const channel = await ChannelModel.update(req.body, {where: {code}})
         
+        return res.status(200).json({
+            ok: true,
+            channel
+        }) 
     }catch(error){
         console.log(error);
         return res.status(500).json({
@@ -31,8 +52,24 @@ const updateChannel = async (req, res) =>{
 
 const deleteChannel = async (req, res) =>{
 
+    const { code } = req.params;
+
     try{
+        const verify = await ChannelModel.findByPk(code)
         
+        if(!verify){
+            return res.status(200).json({
+                ok: false,
+                message: 'Channel code dont exist'
+            })
+        }
+
+        await ChannelModel.destroy({where: {code}});
+
+        return res.status(200).json({
+            ok: true,
+            message: 'channel Deleted'
+        })
     }catch(error){
         console.log(error);
         return res.status(500).json({
@@ -44,8 +81,22 @@ const deleteChannel = async (req, res) =>{
 
 const getChannel = async (req, res) =>{
 
+    const { code } = req.params;
+
     try{
+        const channel = await ChannelModel.findByPk(code)    
+
+        if(!channel){
+            return res.status(404).json({
+                ok: false,
+                msg: 'Channel dont exiss'
+            })    
+        }
         
+        return res.status(200).json({
+            ok: true,
+            channel
+        })
     }catch(error){
         console.log(error);
         return res.status(500).json({
@@ -58,7 +109,19 @@ const getChannel = async (req, res) =>{
 const getChannels = async (req, res) =>{
 
     try{
-        
+        const channels = await ChannelModel.findAll();
+
+        if(!channels){
+            return res.status(404).json({
+                ok: false,
+                msg: 'Dont exist registers'
+            })
+        }
+
+        return res.status(200).json({
+            ok: true,
+            channels
+        }) 
     }catch(error){
         console.log(error);
         return res.status(500).json({
