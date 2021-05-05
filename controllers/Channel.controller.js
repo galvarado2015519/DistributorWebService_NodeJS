@@ -89,7 +89,7 @@ const getChannel = async (req, res) =>{
         if(!channel){
             return res.status(404).json({
                 ok: false,
-                msg: 'Channel dont exiss'
+                msg: 'Channel dont exist'
             })    
         }
         
