@@ -32,29 +32,17 @@ localhost:3800/schedule
 ```
 User
 ```
- `POST localhost/user/`
+ `POST localhost/user/` Ruta para crear un usuario
 
-Ruta para crear un usuario
+ `PUT localhost/user/:code` Ruta para actualizar sun usuario enviando mediante su PrimaryKey(code)
 
- `PUT localhost/user/:code`
+ `DELETE localhost/user/:code` Ruta para eliminar un usuario enviando mediante su PrimaryKey(code)
 
-Ruta para actualizar sun usuario enviando mediante su PrimaryKey(code)
+ `GET localhost/user/` Ruta para buscar un usuario con cualquiera de los parametros del modelo 
 
- `DELETE localhost/user/:code`
+ `GET localhost/users` Ruta para obtener todos los usuarios existentes
 
-Ruta para eliminar un usuario enviando mediante su PrimaryKey(code)
-
- `GET localhost/user/`
-
-Ruta para buscar un usuario con cualquiera de los parametros del modelo 
-
- `GET localhost/users`
-
-Ruta para obtener todos los usuarios existentes
-
- `GET localhost/user/pk`
-
-Ruta para obtener un usuario enviando mediante su PrimaryKey(code)
+ `GET localhost/user/pk` Ruta para obtener un usuario enviando mediante su PrimaryKey(code)
 
 ```
 Channel
