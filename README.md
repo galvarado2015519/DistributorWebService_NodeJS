@@ -1,9 +1,12 @@
 # DistributorWebService_NodeJS
 Web service de mantenimiento para distribuidoras de productos
 
-## npm i
-Instala los paquetes necesarios para correr el servicio.
+# Levantar el servidor
 
+## Comandos
+`npm i` Instala los paquetes necesarios para correr el servicio.
+
+`npm start` Levanta el servicio en el puerto 3800 (Es necesario crear la base de datos primero) 
 
 ## Base de datos
 La base de datos debe de ser creada con el siguiente comando: 
@@ -13,8 +16,6 @@ CREATE DATABASE distributordb
 Las credenciales son manipulables en el archivo config/db.config.js
 La base de datos ya esta definida en las configuraciones
 
-## npm start 
-Levanta el servicio en el puerto 3800
 
 ## Rutas Globales
 
