@@ -20,6 +20,10 @@ const connectDB = async() => {
 connectDB();
 require('./config/connectModels');
 
+app.get('/', (req, res) =>{
+    res.json({message: 'Server running'})
+})
+
 app.listen(PORT, ()=>{
     console.log('The server is running in the port: ' + PORT)
 });

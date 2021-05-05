@@ -1,7 +1,7 @@
 'use strict'
 
-const express = require('express');
 const bodyParser = require('body-parser');
+const express = require('express');
 const cors = require('cors');
 
 const app = express();
@@ -12,16 +12,16 @@ const scheduleRoute = require("./routes/Schedule.route");
 const distributorRoute = require("./routes/distributor.route");
 const channelRoute = require("./routes/channel.route");
 
-app.use(cors());
 
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(cors());
 
 // app.use('/user', userRoute);
 // app.use('/product', productRoute);
 // app.use('/Schedule', scheduleRoute);
-// app.use('/distributor', distributorRoute);
+app.use('/distributor', distributorRoute);
 // app.use('/Channel', channelRoute);
 
 module.exports = app;
