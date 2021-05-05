@@ -1,12 +1,13 @@
-// 'use strict'
+'use strict'
 
-// const userController = require("../controllers/user.controller");
-// const express = require("express");
-// const api = express.Router();
+const UserController = require("../controllers/user.controller");
+const express = require("express");
+const api = express.Router();
 
-// api.get('/', userController);
-// api.post('/', userController);
-// api.put('/:id', userController);
-// api.delete('/:id', userController);
+api.get('/', UserController.getUser);
+api.get('/:code', UserController.getUsers);
+api.post('/', UserController.createUser);
+api.put('/:code', UserController.updateUser);
+api.delete('/:code', UserController.deleteUser);
 
-// module.exports = api;
+module.exports = api;

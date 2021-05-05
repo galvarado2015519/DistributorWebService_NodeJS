@@ -18,10 +18,10 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-// app.use('/user', userRoute);
-// app.use('/product', productRoute);
-// app.use('/Schedule', scheduleRoute);
+app.use('/user', userRoute);
+app.use('/product', productRoute);
+app.use('/Schedule', scheduleRoute);
 app.use('/distributor', distributorRoute);
-// app.use('/Channel', channelRoute);
+app.use('/Channel', channelRoute);
 
 module.exports = app;
