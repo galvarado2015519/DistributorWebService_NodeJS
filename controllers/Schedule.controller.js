@@ -1,7 +1,6 @@
 'use strict'
 
 const ScheduleModel = require('../models/Schedule.model');
-const { Op } = require('sequelize');
 
 const createSchedule = async (req, res) =>{
 
@@ -52,7 +51,7 @@ const deleteSchedule = async (req, res) =>{
 
         return res.status(200).json({
             ok: true,
-            message: 'Horario Eliminado'
+            message: 'Schedule deleted'
         })
 
     }catch(error){
