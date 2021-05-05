@@ -20,8 +20,8 @@ app.use(cors());
 
 app.use('/user', userRoute);
 app.use('/product', productRoute);
-app.use('/Schedule', scheduleRoute);
+app.use('/schedule', scheduleRoute);
 app.use('/distributor', distributorRoute);
-app.use('/Channel', channelRoute);
+app.use('/channel', channelRoute);
 
 module.exports = app;
