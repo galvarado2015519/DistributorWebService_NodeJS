@@ -1,17 +1,18 @@
 'use strict'
 
-const ProductModel = require('../models/product.model');
+const ScheduleModel = require('../models/Schedule.model');
 
-const createProduct = async (req, res) =>{
+const createSchedule = async (req, res) =>{
 
     try{
-        const product = new ProductModel(req.body);
-        await product.save();
+        const schedule = new ScheduleModel(req.body);
+        await schedule.save();
 
         return res.status(200).json({
             ok: true,
-            product
+            schedule
         })
+
     }catch(error){
         console.log(error);
         return res.status(500).json({
@@ -21,26 +22,17 @@ const createProduct = async (req, res) =>{
     }
 }
 
-const updateProduct = async (req, res) =>{
+const updateSchedule = async (req, res) =>{
 
     const { code } = req.params;
-
     try{
-        const verify = await ProductModel.findByPk(code)
-
-        if(!verify){
-            return res.status(404).json({
-                ok: false,
-                msg: 'This code of product dont exist'
-            }) 
-        }
-
-        const product = await ProductModel.update(req.body, {where: {code}})
+        
+        const schedule = await ScheduleModel.update(req.body, {where: {code}})
         
         return res.status(200).json({
             ok: true,
-            product
-        }) 
+            schedule
+        })
     }catch(error){
         console.log(error);
         return res.status(500).json({
@@ -50,27 +42,18 @@ const updateProduct = async (req, res) =>{
     }
 }
 
-const deleteProduct = async (req, res) =>{
+const deleteSchedule = async (req, res) =>{
 
     const { code } = req.params;
 
     try{
-
-        const verify = await ProductModel.findByPk(code)
-        
-        if(!verify){
-            return res.status(200).json({
-                ok: false,
-                message: 'Product code dont exist'
-            })
-        }
-
-        await ProductModel.destroy({where: {code}});
+        await ScheduleModel.destroy({where: {code}});
 
         return res.status(200).json({
             ok: true,
-            message: 'Product Deleted'
+            message: 'Schedule deleted'
         })
+
     }catch(error){
         console.log(error);
         return res.status(500).json({
@@ -80,24 +63,25 @@ const deleteProduct = async (req, res) =>{
     }
 }
 
-const getProduct = async (req, res) =>{
+const getSchedule = async (req, res) =>{
 
     const { code } = req.params;
-
+    
     try{
-        const product = await ProductModel.findByPk(code)    
+        const schedule = await ScheduleModel.findByPk(code)    
 
-        if(!product){
+        if(!schedule){
             return res.status(404).json({
                 ok: false,
-                msg: 'Product dont exiss'
+                msg: 'Schedule dont exiss'
             })    
         }
         
         return res.status(200).json({
             ok: true,
-            product
+            schedule
         })
+
     }catch(error){
         console.log(error);
         return res.status(500).json({
@@ -107,12 +91,12 @@ const getProduct = async (req, res) =>{
     }
 }
 
-const getProducts = async (req, res) =>{
+const getSchedules = async (req, res) =>{
 
     try{
-        const products = await ProductModel.findAll();
+        const schedules = await ScheduleModel.findAll();
 
-        if(!products){
+        if(!schedules){
             return res.status(404).json({
                 ok: false,
                 msg: 'Dont exist registers'
@@ -121,7 +105,7 @@ const getProducts = async (req, res) =>{
 
         return res.status(200).json({
             ok: true,
-            products
+            schedules
         })
     }catch(error){
         console.log(error);
@@ -133,9 +117,9 @@ const getProducts = async (req, res) =>{
 }
 
 module.exports = {
-    createProduct,
-    updateProduct,
-    deleteProduct,
-    getProduct,
-    getProducts
+    createSchedule,
+    updateSchedule,
+    deleteSchedule,
+    getSchedule,
+    getSchedules
 }

@@ -1,16 +1,16 @@
 'use strict'
 
-const ProductModel = require('../models/product.model');
+const ChannelModel = require('../models/Channel.model');
 
-const createProduct = async (req, res) =>{
+const createChannel = async (req, res) =>{
 
     try{
-        const product = new ProductModel(req.body);
-        await product.save();
+        const channel = new ChannelModel(req.body);
+        await channel.save();
 
         return res.status(200).json({
             ok: true,
-            product
+            channel
         })
     }catch(error){
         console.log(error);
@@ -21,25 +21,25 @@ const createProduct = async (req, res) =>{
     }
 }
 
-const updateProduct = async (req, res) =>{
+const updateChannel = async (req, res) =>{
 
     const { code } = req.params;
 
     try{
-        const verify = await ProductModel.findByPk(code)
+        const verify = await ChannelModel.findByPk(code)
 
         if(!verify){
             return res.status(404).json({
                 ok: false,
-                msg: 'This code of product dont exist'
+                msg: 'This code of channel dont exist'
             }) 
         }
 
-        const product = await ProductModel.update(req.body, {where: {code}})
+        const channel = await ChannelModel.update(req.body, {where: {code}})
         
         return res.status(200).json({
             ok: true,
-            product
+            channel
         }) 
     }catch(error){
         console.log(error);
@@ -50,26 +50,25 @@ const updateProduct = async (req, res) =>{
     }
 }
 
-const deleteProduct = async (req, res) =>{
+const deleteChannel = async (req, res) =>{
 
     const { code } = req.params;
 
     try{
-
-        const verify = await ProductModel.findByPk(code)
+        const verify = await ChannelModel.findByPk(code)
         
         if(!verify){
             return res.status(200).json({
                 ok: false,
-                message: 'Product code dont exist'
+                message: 'Channel code dont exist'
             })
         }
 
-        await ProductModel.destroy({where: {code}});
+        await ChannelModel.destroy({where: {code}});
 
         return res.status(200).json({
             ok: true,
-            message: 'Product Deleted'
+            message: 'channel Deleted'
         })
     }catch(error){
         console.log(error);
@@ -80,23 +79,23 @@ const deleteProduct = async (req, res) =>{
     }
 }
 
-const getProduct = async (req, res) =>{
+const getChannel = async (req, res) =>{
 
     const { code } = req.params;
 
     try{
-        const product = await ProductModel.findByPk(code)    
+        const channel = await ChannelModel.findByPk(code)    
 
-        if(!product){
+        if(!channel){
             return res.status(404).json({
                 ok: false,
-                msg: 'Product dont exiss'
+                msg: 'Channel dont exist'
             })    
         }
         
         return res.status(200).json({
             ok: true,
-            product
+            channel
         })
     }catch(error){
         console.log(error);
@@ -107,12 +106,12 @@ const getProduct = async (req, res) =>{
     }
 }
 
-const getProducts = async (req, res) =>{
+const getChannels = async (req, res) =>{
 
     try{
-        const products = await ProductModel.findAll();
+        const channels = await ChannelModel.findAll();
 
-        if(!products){
+        if(!channels){
             return res.status(404).json({
                 ok: false,
                 msg: 'Dont exist registers'
@@ -121,8 +120,8 @@ const getProducts = async (req, res) =>{
 
         return res.status(200).json({
             ok: true,
-            products
-        })
+            channels
+        }) 
     }catch(error){
         console.log(error);
         return res.status(500).json({
@@ -133,9 +132,9 @@ const getProducts = async (req, res) =>{
 }
 
 module.exports = {
-    createProduct,
-    updateProduct,
-    deleteProduct,
-    getProduct,
-    getProducts
+    createChannel,
+    updateChannel,
+    deleteChannel,
+    getChannel,
+    getChannels
 }

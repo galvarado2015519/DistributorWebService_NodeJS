@@ -1,38 +1,30 @@
 'use strict'
 
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/db.config");
+const {DataTypes} = require('sequelize');
+const {sequelize} = require('../config/db.config');
 
-const UserModel = sequelize.define("User", {
+const ScheduleModel = sequelize.define('Schedule', {
     code:{
         type: DataTypes.INTEGER,
         primaryKey: true,
         unique: true,
         autoIncrement: true
     },
-    name:{
+    start: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: 'The name is required'}
+            notNull: { msg: 'Start time is required'}
         }
     },
-    email:{
+    end: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            isEmail: {msg: 'This email is invalid'},
-            notNull: { msg: 'Email is required'}
+            notNull: {msg: 'End time is required'},
         }
     },
-    phone:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notNull: {msg: 'Phone is required'}
-        }
-    },
-    distributorCode:{
+    distributorCode: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -46,4 +38,4 @@ const UserModel = sequelize.define("User", {
     timestamps: false
 });
 
-module.exports = UserModel;
+module.exports = ScheduleModel;

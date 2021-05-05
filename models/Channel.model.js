@@ -1,31 +1,24 @@
 'use strict'
 
 const { DataTypes } = require('sequelize');
-const {sequelize} = require('../config/db.config');
+const { sequelize } = require('../config/db.config');
 
-const ProductModel = sequelize.define('Product', {
-    code:{
+const ChannelModel = sequelize.define('Channel', {
+    code: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         unique: true,
         autoIncrement: true
     },
-    description:{
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: 'Description is required'}
-        }
-    },
-    amount:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notNull: { msg: 'Amount is required'}
+            notNull: { msg: 'Name is required'}
         }
     },
     distributorCode: {
-        type: DataTypes.INTEGER,
+        type:DataTypes.INTEGER,
         allowNull: false,
         references: {
             model: 'Distributor',
@@ -36,6 +29,6 @@ const ProductModel = sequelize.define('Product', {
     }
 }, {
     timestamps: false
-});
+})
 
-module.exports = ProductModel;
+module.exports = ChannelModel;
