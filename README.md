@@ -1,10 +1,6 @@
 # DistributorWebService_NodeJS
 Web service de mantenimiento para distribuidoras de productos
 
-
-## npm start 
-Levanta el servicio en el puerto 3800
-
 ## npm i
 Instala los paquetes necesarios para correr el servicio.
 
@@ -16,6 +12,9 @@ CREATE DATABASE distributordb
 ```
 Las credenciales son manipulables en el archivo config/db.config.js
 La base de datos ya esta definida en las configuraciones
+
+## npm start 
+Levanta el servicio en el puerto 3800
 
 ## Rutas Globales
 
@@ -32,110 +31,69 @@ localhost:3800/schedule
 ```
 User
 ```
- `POST localhost/user/` Ruta para crear un usuario
+ `POST localhost:3800/user/` Ruta para crear un usuario
 
- `PUT localhost/user/:code` Ruta para actualizar sun usuario enviando mediante su PrimaryKey(code)
+ `PUT localhost:3800/user/:code` Ruta para actualizar un usuario mediante su llave primaria
 
- `DELETE localhost/user/:code` Ruta para eliminar un usuario enviando mediante su PrimaryKey(code)
+ `DELETE localhost:3800/user/:code` Ruta para eliminar un usuario  mediante su llave primaria
 
- `GET localhost/user/` Ruta para buscar un usuario con cualquiera de los parametros del modelo 
+ `GET localhost:3800/user/` Ruta para buscar un usuario con su llave primaria 
 
- `GET localhost/users` Ruta para obtener todos los usuarios existentes
+ `GET localhost:3800/users` Ruta para obtener todos los usuarios existentes
 
- `GET localhost/user/pk` Ruta para obtener un usuario enviando mediante su PrimaryKey(code)
 
 ```
 Channel
 ```
 
- `POST localhost/channel/`
+ `POST localhost:3800/channel/` Ruta para crear un canal
 
-Ruta para crear un canal
+ `PUT localhost:3800/channel/:code` Ruta para actualizar un canal  mediante su llave primaria
 
- `PUT localhost/channel/:code`
+ `DELETE localhost:3800/channel/:code` Ruta para eliminar un canal  mediante su llave primaria
 
-Ruta para actualizar un canal enviando mediante su PrimaryKey(code)
+ `GET localhost:3800/channel/` Ruta para buscar un canal con su llave primaria 
 
- `DELETE localhost/channel/:code`
-
-Ruta para eliminar un canal enviando mediante su PrimaryKey(code)
-
- `GET localhost/channel/`
-
-Ruta para buscar un canal con cualquiera de los parametros del modelo 
-
- `GET localhost/channels`
-
-Ruta para obtener todos los canales existentes
+ `GET localhost:3800/channels` Ruta para obtener todos los canales existentes
 
 
 ```
 Distributor
 ```
- `POST localhost/distributor/`
+ `POST localhost:3800/distributor/` Ruta para crear un distribuidor
 
-Ruta para crear un distribuidor
+ `PUT localhost:3800/distributor/:code` Ruta para actualizar un distribuidor  mediante su llave primaria
 
- `PUT localhost/distributor/:code`
+ `DELETE localhost:3800/distributor/:code` Ruta para eliminar un distribuidor  mediante su llave primaria
 
-Ruta para actualizar un distribuidor enviando mediante su PrimaryKey(code)
+ `GET localhost:3800/distributor/` Ruta para buscar un distribuidor con su llave primaria 
 
- `DELETE localhost/distributor/:code`
-
-Ruta para eliminar un distribuidor enviando mediante su PrimaryKey(code)
-
- `GET localhost/distributor/`
-
-Ruta para buscar un distribuidor con cualquiera de los parametros del modelo 
-
- `GET localhost/distributors`
-
-Ruta para obtener todos los distribuidores existentes
+ `GET localhost:3800/distributors` Ruta para obtener todos los distribuidores existentes
 
 ```
 Product
 ```
 
- `POST localhost/product/`
+ `POST localhost:3800/product/` Ruta para crear un producto
 
-Ruta para crear un producto
+ `PUT localhost:3800/product/:code` Ruta para actualizar un producto  mediante su llave primaria
 
- `PUT localhost/product/:code`
+ `DELETE localhost:3800/product/:code` Ruta para eliminar un producto  mediante su llave primaria
 
-Ruta para actualizar un producto enviando mediante su PrimaryKey(code)
+ `GET localhost:3800/product/` Ruta para buscar un producto con su llave primaria 
 
- `DELETE localhost/product/:code`
-
-Ruta para eliminar un producto enviando mediante su PrimaryKey(code)
-
- `GET localhost/product/`
-
-Ruta para buscar un producto con cualquiera de los parametros del modelo 
-
- `GET localhost/products`
-
-Ruta para obtener todos los productos existentes
+ `GET localhost:3800/products` Ruta para obtener todos los productos existentes
 
 ```
 Schedule
 ```
 
- `POST localhost/schedule/`
+ `POST localhost:3800/schedule/` Ruta para crear un horario
 
-Ruta para crear un horario
+ `PUT localhost:3800/schedule/:code` Ruta para actualizar un horario  mediante su llave primaria
 
- `PUT localhost/schedule/:code`
+ `DELETE localhost:3800/schedule/:code` Ruta para eliminar un horario  mediante su llave primaria
 
-Ruta para actualizar un horario enviando mediante su PrimaryKey(code)
+ `GET localhost:3800/schedule/` Ruta para buscar un horario con su llave primaria 
 
- `DELETE localhost/schedule/:code`
-
-Ruta para eliminar un horario enviando mediante su PrimaryKey(code)
-
- `GET localhost/schedule/`
-
-Ruta para buscar un horario con cualquiera de los parametros del modelo 
-
- `GET localhost/schedules`
-
-Ruta para obtener todos los horarios existentes
+ `GET localhost:3800/schedules` Ruta para obtener todos los horarios existentes
