@@ -1,12 +1,13 @@
-// 'use strict'
+'use strict'
 
-// const productController = require("../controllers/product.controller");
-// const express = require("express");
-// const api = express.Router();
+const ProductController = require("../controllers/product.controller");
+const express = require("express");
+const api = express.Router();
 
-// api.get('/', productController);
-// api.post('/', productController);
-// api.put('/:id', productController);
-// api.delete('/:id', productController);
+api.get('/', ProductController.getProducts);
+api.get('/:code', ProductController.getProduct);
+api.post('/', ProductController.createProduct);
+api.put('/:code', ProductController.updateProduct);
+api.delete('/:code', ProductController.deleteProduct);
 
-// module.exports = api;
+module.exports = api;

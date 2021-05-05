@@ -19,6 +19,7 @@ const ChannelModel = sequelize.define('Channel', {
     },
     distributorCode: {
         type:DataTypes.INTEGER,
+        allowNull: false,
         references: {
             model: 'Distributor',
             key: 'code'
